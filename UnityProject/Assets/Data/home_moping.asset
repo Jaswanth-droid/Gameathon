@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a8bf637ab4f2f45961ccc559dbfd0f, type: 3}
+  m_Name: home_moping
+  m_EditorClassIdentifier: 
+  id: home_moping
+  text: You're at your computer. Your bank balance shows exactly $4.50. You really
+    want that game. You open a search tab.
+  speaker: Scene
+  speakerName: Your Bedroom
+  isBreach: 0
+  choices:
+  - text: 'Search: ''NEON-STRIKE 2 Official Store'''
+    nextId: search_official
+    isCritical: 0
+    scoreChange: 0
+    feedback: 
+  - text: 'Search: ''NEON-STRIKE 2 FREE DOWNLOAD CRACK'''
+    nextId: search_shady
+    isCritical: 0
+    scoreChange: 0
+    feedback: 

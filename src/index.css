@@ -1,0 +1,79 @@
+:root {
+  --neon-green: #39ff14;
+  --neon-blue: #00f3ff;
+  --neon-purple: #bc13fe;
+  --dark-bg: #050505;
+  --card-bg: #111111;
+  --text-primary: #ffffff;
+  --text-secondary: #aaaaaa;
+  --danger: #ff0055;
+  --warning: #ffaa00;
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Roboto Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  overflow: hidden; /* Prevent scrolling for the game interface */
+  height: 100vh;
+  width: 100vw;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.glitch-text {
+  position: relative;
+  text-shadow: 0.05em 0 0 rgba(255, 0, 85, 0.75),
+    -0.025em -0.05em 0 rgba(0, 255, 85, 0.75),
+    0.025em 0.05em 0 rgba(0, 85, 255, 0.75);
+  animation: glitch 500ms infinite;
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 0.05em 0 0 rgba(255, 0, 85, 0.75),
+      -0.025em -0.05em 0 rgba(0, 255, 85, 0.75),
+      0.025em 0.05em 0 rgba(0, 85, 255, 0.75);
+  }
+  14% {
+    text-shadow: 0.05em 0 0 rgba(255, 0, 85, 0.75),
+      -0.025em -0.05em 0 rgba(0, 255, 85, 0.75),
+      0.025em 0.05em 0 rgba(0, 85, 255, 0.75);
+  }
+  15% {
+    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 85, 0.75),
+      0.025em 0.025em 0 rgba(0, 255, 85, 0.75),
+      -0.05em -0.05em 0 rgba(0, 85, 255, 0.75);
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 85, 0.75),
+      0.025em 0.025em 0 rgba(0, 255, 85, 0.75),
+      -0.05em -0.05em 0 rgba(0, 85, 255, 0.75);
+  }
+  50% {
+    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 85, 0.75),
+      0.05em 0 0 rgba(0, 255, 85, 0.75),
+      0 -0.05em 0 rgba(0, 85, 255, 0.75);
+  }
+  99% {
+    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 85, 0.75),
+      0.05em 0 0 rgba(0, 255, 85, 0.75),
+      0 -0.05em 0 rgba(0, 85, 255, 0.75);
+  }
+  100% {
+    text-shadow: -0.025em 0 0 rgba(255, 0, 85, 0.75),
+      -0.025em -0.025em 0 rgba(0, 255, 85, 0.75),
+      -0.025em -0.05em 0 rgba(0, 85, 255, 0.75);
+  }
+}
