@@ -19,6 +19,3 @@ Thank you for your interest in contributing to Gameathon! We welcome all kinds o
 - Ensure your code is well-commented and easy to understand.
 - Write unit tests for new features where applicable.
 
-## License
-
-By contributing to this project, you agree that your contributions will be licensed under the MIT License.

@@ -1,0 +1,197 @@
+.login-portal-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  color: #f5f5ff;
+  overflow: hidden;
+}
+
+.login-cyber-background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url('/assets/login_bg.png') center/cover no-repeat;
+  filter: brightness(0.4) contrast(1.2);
+}
+
+.login-cyber-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(5, 8, 22, 0.8)),
+    radial-gradient(circle at 50% 50%, transparent 20%, rgba(0, 0, 0, 0.6) 100%);
+  pointer-events: none;
+}
+
+.login-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+  pointer-events: none;
+  animation: floatOrb 15s ease-in-out infinite alternate;
+}
+
+.login-orb--blue {
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, rgba(0, 243, 255, 0.4), transparent 70%);
+  top: -10%;
+  left: -10%;
+}
+
+.login-orb--purple {
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(157, 0, 255, 0.3), transparent 70%);
+  bottom: -15%;
+  right: -15%;
+  animation-delay: -5s;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(3%, -3%) scale(1.1); }
+}
+
+.login-wrapper {
+  width: 100%;
+  max-width: 460px;
+  padding: 30px;
+  z-index: 10;
+}
+
+.login-card {
+  background: rgba(10, 10, 20, 0.65);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(0, 243, 255, 0.1),
+    inset 0 0 10px rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.login-card-header {
+  text-align: center;
+}
+
+.login-game-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  background: linear-gradient(to bottom, #fff, #00f3ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.5));
+  margin-bottom: 4px;
+}
+
+.login-subtitle {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  font-weight: 500;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login-field label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #00f3ff;
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.login-field input {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.login-field input:focus {
+  border-color: #00f3ff;
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.2), inset 0 0 5px rgba(0, 243, 255, 0.1);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.login-button-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.login-button {
+  flex: 2;
+  background: linear-gradient(135deg, #00f3ff, #9d00ff);
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  color: white;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.login-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(0, 243, 255, 0.5);
+  filter: brightness(1.1);
+}
+
+.login-button:active {
+  transform: scale(0.98);
+}
+
+.login-btn-signout {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login-btn-signout:hover {
+  background: rgba(255, 0, 60, 0.1);
+  border-color: #ff003c;
+  color: #ff003c;
+  box-shadow: 0 0 20px rgba(255, 0, 60, 0.2);
+}
+
+.login-status-message {
+  text-align: center;
+  font-size: 0.8rem;
+  font-family: monospace;
+  letter-spacing: 0.05em;
+  min-height: 1.2em;
+}

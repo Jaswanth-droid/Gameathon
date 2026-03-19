@@ -1,0 +1,151 @@
+.mission-player-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #fff;
+}
+
+.mission-background {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.3) saturate(0.8);
+  transition: background-image 1s ease-in-out;
+  z-index: 0;
+}
+
+.mission-content {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.mission-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  opacity: 0.8;
+}
+
+.mission-title {
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+  color: #00f3ff;
+  text-transform: uppercase;
+}
+
+.character-display-area {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+.dialogue-container {
+  background: rgba(10, 10, 20, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  border-radius: 20px;
+  padding: 30px 40px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.speaker-tag {
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  background: #00f3ff;
+  color: #000;
+  padding: 4px 16px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.dialogue-text {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+  font-weight: 400;
+}
+
+.choice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.choice-button {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px 24px;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.choice-button:hover {
+  background: rgba(0, 243, 255, 0.1);
+  border-color: #00f3ff;
+  transform: translateX(10px);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+}
+
+.choice-arrow {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  color: #00f3ff;
+}
+
+.choice-button:hover .choice-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.minigame-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mission-footer {
+  margin-top: 20px;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  color: #444;
+  letter-spacing: 2px;
+}

@@ -6,8 +6,8 @@ namespace CyberSec
     {
         public static ScoreManager Instance { get; private set; }
 
-        public int currentScore { get; private set; }
-        public int maxPossibleScore { get; private set; }
+        public int securityIntegrity { get; private set; }
+        public int phishingAwareness { get; private set; }
 
         private void Awake()
         {
@@ -15,20 +15,27 @@ namespace CyberSec
             {
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
+                securityIntegrity = 100; // Start with full integrity
             }
             else Destroy(gameObject);
-        }
-
-        public void ResetScore(int maxScore = 100)
-        {
-            currentScore = 0;
-            maxPossibleScore = maxScore;
         }
 
         public void AddScore(int points)
         {
             currentScore += points;
             EventManager.TriggerEvent("ScoreChanged", currentScore);
+        }
+
+        public void ModifyIntegrity(int amount)
+        {
+            securityIntegrity = Mathf.Clamp(securityIntegrity + amount, 0, 100);
+            EventManager.TriggerEvent("IntegrityChanged", securityIntegrity);
+        }
+
+        public void AddAwareness(int amount)
+        {
+            phishingAwareness += amount;
+            EventManager.TriggerEvent("AwarenessChanged", phishingAwareness);
         }
 
         public void DeductScore(int points)

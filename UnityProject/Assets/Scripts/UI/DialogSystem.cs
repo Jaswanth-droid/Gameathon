@@ -107,31 +107,59 @@ namespace CyberSec
             }
         }
 
-        private void ShowChoices()
+        public void ShowStoryNode(StoryNode node)
         {
-            if (currentNode.choices == null || currentNode.choices.Count == 0)
+            currentNodeId = node.name; // For internal tracking
+            
+            if (speakerNameText) speakerNameText.text = node.speakerName;
+            if (speakerPortrait) speakerPortrait.sprite = node.characterPortrait;
+
+            // Clear choices
+            if (choiceContainer)
             {
-                // Auto-advance or end
-                CreateChoiceButton("Continue", () => EndDialog("complete"));
+                foreach (Transform child in choiceContainer)
+                    Destroy(child.gameObject);
+            }
+
+            // Show text
+            fullText = node.dialogueText;
+            if (useTypewriter)
+            {
+                if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+                typingCoroutine = StartCoroutine(TypeText(fullText, node.choices));
+            }
+            else
+            {
+                if (dialogueText) dialogueText.text = fullText;
+                ShowStoryChoices(node.choices);
+            }
+        }
+
+        private IEnumerator TypeText(string text, List<StoryChoice> choices)
+        {
+            isTyping = true;
+            dialogueText.text = "";
+            foreach (char c in text)
+            {
+                dialogueText.text += c;
+                yield return new WaitForSeconds(typingSpeed);
+            }
+            isTyping = false;
+            ShowStoryChoices(choices);
+        }
+
+        private void ShowStoryChoices(List<StoryChoice> choices)
+        {
+            if (choices == null || choices.Count == 0)
+            {
+                CreateChoiceButton("Continue", () => StoryManager.Instance?.Continue());
                 return;
             }
 
-            foreach (var choice in currentNode.choices)
+            foreach (var choice in choices)
             {
-                var c = choice; // capture for closure
-                CreateChoiceButton(c.text, () =>
-                {
-                    if (c.scoreChange != 0)
-                        ScoreManager.Instance?.AddScore(c.scoreChange);
-
-                    if (!string.IsNullOrEmpty(c.feedback))
-                        PopupController.Instance?.ShowPopup("Alert", c.feedback);
-
-                    if (!string.IsNullOrEmpty(c.nextId))
-                        ShowNode(c.nextId);
-                    else
-                        EndDialog("complete");
-                });
+                var c = choice; 
+                CreateChoiceButton(c.choiceText, () => StoryManager.Instance?.MakeChoice(c));
             }
         }
 

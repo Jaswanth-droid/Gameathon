@@ -1,4 +1,4 @@
-# 🛡️ APP NEX - Gameathon Edition
+# 🛡️ CyberSec Game - Gameathon Edition
 
 Welcome to **CyberSec Game**, an interactive educational experience designed to raise awareness about cyber security.
 

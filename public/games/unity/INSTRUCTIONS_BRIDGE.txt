@@ -1,0 +1,36 @@
+UNITY TO REACT BRIDGE GUIDE
+==========================
+
+To let the React Map know that a level is complete, you need to use 
+Unity's JavaScript bridge.
+
+1. Create a file named `ReactBridge.jslib` in `Assets/Plugins/` with this content:
+
+mergeInto(LibraryManager.library, {
+  NotifyLevelComplete: function (level) {
+    window.parent.postMessage({
+      type: 'LEVEL_DONE',
+      level: level
+    }, '*');
+  },
+});
+
+2. In your C# script where a level is finished:
+
+using System.Runtime.InteropServices;
+
+public class LevelManager : MonoBehaviour {
+    [DllImport("__Internal")]
+    private static extern void NotifyLevelComplete(int level);
+
+    public void FinishLevel(int id) {
+        #if UNITY_WEBGL && !UNITY_EDITOR
+            NotifyLevelComplete(id);
+        #endif
+        Debug.Log("Level Complete: " + id);
+    }
+}
+
+Once you build your Unity project for WebGL, place ALL exported 
+files (index.html, Build folder, TemplateData folder) into 
+this directory: `public/games/unity/`
